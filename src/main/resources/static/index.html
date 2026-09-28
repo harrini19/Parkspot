@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ParkSpot visitor parking management dashboard">
+    <title>ParkSpot | Visitor parking</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%231e5f5a'/%3E%3Ctext x='50' y='68' text-anchor='middle' font-size='58' fill='white' font-family='Arial'%3EP%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="topbar">
+    <div class="brand"><span class="brand-mark">P</span><span>ParkSpot</span></div>
+    <div class="topbar-meta"><span class="status-dot"></span><span>Gate desk online</span><span id="current-date"></span></div>
+</header>
+<main id="main-content" class="shell">
+    <section class="hero">
+        <div>
+            <p class="eyebrow">Society visitor parking</p>
+            <h1>Keep every arrival<br><em>accounted for.</em></h1>
+            <p class="hero-copy">A clear view of today's visitor vehicles, active bays, and departures from the gate desk.</p>
+        </div>
+        <div class="hero-note"><span class="hero-note-label">Today at a glance</span><strong id="hero-count">—</strong><span>vehicles checked in</span></div>
+    </section>
+    <section class="stats-grid" aria-label="Parking summary">
+        <article class="stat-card accent"><span class="stat-label">Occupied now</span><strong id="occupied-count">—</strong><span class="stat-foot">active visitor bays</span></article>
+        <article class="stat-card"><span class="stat-label">Total bays</span><strong id="slot-count">—</strong><span class="stat-foot">registered in ParkSpot</span></article>
+        <article class="stat-card"><span class="stat-label">Today's visits</span><strong id="visit-count">—</strong><span class="stat-foot">entries recorded</span></article>
+    </section>
+    <div id="message" class="message" role="status" aria-live="polite"></div>
+    <section class="workspace-grid">
+        <article class="panel entry-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Gate desk</p><h2>Register arrival</h2></div><span class="panel-index">01</span></div>
+            <form id="entry-form">
+                <label>Vehicle number<input id="vehicle-number" name="vehicleNumber" placeholder="e.g. KA 01 AB 1234" required></label>
+                <label>Flat visited<input id="flat-id" name="flatId" type="number" min="1" placeholder="Flat ID" required></label>
+                <label>Parking slot<input id="slot-id" name="parkingSlotId" type="number" min="1" placeholder="Slot ID" required></label>
+                <button class="primary-button" type="submit">Log visitor entry <span>↗</span></button>
+            </form>
+        </article>
+        <article class="panel occupied-panel">
+            <div class="panel-heading"><div><p class="eyebrow">Live view</p><h2>Occupied slots</h2></div><button class="text-button" id="refresh-occupied">Refresh ↻</button></div>
+            <div id="occupied-list" class="list" aria-live="polite"><div class="loading-row">Loading active bays…</div></div>
+        </article>
+    </section>
+    <section class="panel log-panel">
+        <div class="panel-heading"><div><p class="eyebrow">Activity</p><h2>Today's visitor log</h2></div><button class="text-button" id="refresh-log">Refresh ↻</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Vehicle</th><th>Flat</th><th>Slot</th><th>Entry</th><th>Exit</th><th></th></tr></thead><tbody id="log-body"><tr><td colspan="6" class="empty-cell">Loading today's activity…</td></tr></tbody></table></div>
+    </section>
+</main>
+<footer class="footer"><span>ParkSpot · Gate operations</span><span>Visitor parking, made visible.</span></footer>
+<script src="app.js"></script>
+</body>
+</html>
