@@ -37,9 +37,31 @@
             <div class="panel-heading"><div><p class="eyebrow">Gate desk</p><h2>Register arrival</h2></div><span class="panel-index">01</span></div>
             <form id="entry-form">
                 <label>Vehicle number<input id="vehicle-number" name="vehicleNumber" placeholder="e.g. KA 01 AB 1234" required></label>
-                <label>Flat visited<input id="flat-id" name="flatId" type="number" min="1" placeholder="Flat ID" required></label>
-                <label>Parking slot<input id="slot-id" name="parkingSlotId" type="number" min="1" placeholder="Slot ID" required></label>
-                <button class="primary-button" type="submit">Log visitor entry <span>↗</span></button>
+                <label>Flat visited<select id="flat-number" name="flatNumber" required>
+                    <option value="">Select a flat</option>
+                    <option value="A-101">A-101 - Anita Sharma</option>
+                    <option value="A-102">A-102 - Rohan Mehta</option>
+                    <option value="A-103">A-103 - Priya Nair</option>
+                    <option value="A-104">A-104 - Vikram Rao</option>
+                    <option value="A-105">A-105 - Kavya Iyer</option>
+                    <option value="B-101">B-101 - Arjun Kapoor</option>
+                    <option value="B-102">B-102 - Neha Joshi</option>
+                    <option value="B-103">B-103 - Sanjay Menon</option>
+                    <option value="B-104">B-104 - Divya Shah</option>
+                    <option value="B-105">B-105 - Manish Verma</option>
+                    <option value="C-101">C-101 - Ishita Das</option>
+                    <option value="C-102">C-102 - Rahul Bhat</option>
+                    <option value="C-103">C-103 - Sneha Kulkarni</option>
+                    <option value="C-104">C-104 - Aditya Singh</option>
+                    <option value="C-105">C-105 - Pooja Nambiar</option>
+                    <option value="D-101">D-101 - Nitin Malhotra</option>
+                    <option value="D-102">D-102 - Simran Kaur</option>
+                    <option value="D-103">D-103 - Amit Chawla</option>
+                    <option value="D-104">D-104 - Lata Deshmukh</option>
+                    <option value="D-105">D-105 - Varun Pillai</option>
+                </select></label>
+                <label>Parking slot<select id="slot-id" name="parkingSlotId" required><option value="">Loading available slots...</option></select></label>
+                <button id="entry-submit" class="primary-button" type="submit">Log visitor entry <span>↗</span></button>
             </form>
         </article>
         <article class="panel occupied-panel">
@@ -53,6 +75,6 @@
     </section>
 </main>
 <footer class="footer"><span>ParkSpot · Gate operations</span><span>Visitor parking, made visible.</span></footer>
-<script src="app.js"></script>
+<script src="app.js?v=20260929b"></script>
 </body>
 </html>
