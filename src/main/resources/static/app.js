@@ -422,7 +422,19 @@ const formElement = event.currentTarget;
 const form = new FormData(formElement);
 
 const vehicleNumber =
-  form.get('vehicleNumber');
+  String(form.get('vehicleNumber') || '').trim().toUpperCase();
+
+const VEHICLE_RE = /^[A-Z0-9][A-Z0-9 \-]*$/;
+
+if (!vehicleNumber) {
+  showMessage('Vehicle number is required.', 'error');
+  return;
+}
+
+if (!VEHICLE_RE.test(vehicleNumber) || vehicleNumber.length > 20) {
+  showMessage('Enter a valid vehicle number (letters, digits, spaces, hyphens only; must not start with - or a symbol).', 'error');
+  return;
+}
 
 const flatNumber =
   String(form.get('flatNumber') || '').trim();
